@@ -1,14 +1,15 @@
-package com.example.prueba_cuatro.models.service;
+package com.example.prueba_cuatro.models.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ista.springboot.web.app.models.dao.ICantonDao;
-import com.ista.springboot.web.app.models.entity.Canton;
+import com.example.prueba_cuatro.models.dao.ICantonDao;
+import com.example.prueba_cuatro.models.entity.Canton;
 
-
+@Service
 public class CantonServiceImpl implements ICantonService{
 	
 	@Autowired

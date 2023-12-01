@@ -14,48 +14,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.prueba_cuatro.models.entity.Provincia;
-import com.example.prueba_cuatro.models.services.IProvinciaService;
+import com.example.prueba_cuatro.models.entity.Canton;
 
+import com.example.prueba_cuatro.models.services.ICantonService;
 
 @RestController
 @RequestMapping("/api")
-public class ProvinciaRestController {
-	
+public class CantonRestController {
+
 	@Autowired
-	private IProvinciaService provinciaService;
+	private ICantonService cantonService;
 	
-	@GetMapping("/provincias")
-	public List<Provincia> index(){
-		return provinciaService.findAll();
-		
+	@GetMapping("/cantones")
+	private List<Canton> index(){
+		return cantonService.findAll();
 	}
 	
-	@GetMapping("/provincias/{id}")
-	public Provincia show(@PathVariable Long id) {
+	@GetMapping("/cantones/{id}")
+	public Canton show(@PathVariable Long id) {
 		
-		return provinciaService.findById(id);
+		return cantonService.findById(id);
 	}
 	
-	@PostMapping("/provincias")
+	@PostMapping("/cantones")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia create(@RequestBody Provincia provincia) {
+	public Canton create(@RequestBody Canton canton) {
 		
-		return provinciaService.save(provincia);
+		return cantonService.save(canton);
 	}
 	
-	@PutMapping("/provincias/{id}")
+	@PutMapping("/cantones/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia update(@RequestBody Provincia provincia, @PathVariable Long id) {
-		Provincia provinciaActual=provinciaService.findById(id);
-		provinciaActual.setNombre_provincia(provincia.getNombre_provincia());
-		return provinciaService.save(provinciaActual);
+	public Canton update(@RequestBody Canton canton, @PathVariable Long id) {
+		Canton cantonActual=cantonService.findById(id);
+		cantonActual.setNombre_canton(canton.getNombre_canton());
+		return cantonService.save(cantonActual);
 	}
 	
-	@DeleteMapping("/provincias/{id}")
+	@DeleteMapping("/cantones/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		provinciaService.delete(id);
+		cantonService.delete(id);
 		
 	}
 }

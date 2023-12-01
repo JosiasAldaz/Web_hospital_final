@@ -14,48 +14,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.prueba_cuatro.models.entity.Provincia;
-import com.example.prueba_cuatro.models.services.IProvinciaService;
-
+import com.example.prueba_cuatro.models.entity.Area;
+import com.example.prueba_cuatro.models.services.IAreaService;
 
 @RestController
 @RequestMapping("/api")
-public class ProvinciaRestController {
-	
+public class AreaRestController {
+
 	@Autowired
-	private IProvinciaService provinciaService;
+	private IAreaService areaService;
 	
-	@GetMapping("/provincias")
-	public List<Provincia> index(){
-		return provinciaService.findAll();
-		
+	@GetMapping("/areas")
+	private List<Area> index(){
+		return areaService.findAll();
 	}
 	
-	@GetMapping("/provincias/{id}")
-	public Provincia show(@PathVariable Long id) {
+	@GetMapping("/areas/{id}")
+	public Area show(@PathVariable Long id) {
 		
-		return provinciaService.findById(id);
+		return areaService.findById(id);
 	}
 	
-	@PostMapping("/provincias")
+	@PostMapping("/areas")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia create(@RequestBody Provincia provincia) {
+	public Area create(@RequestBody Area area) {
 		
-		return provinciaService.save(provincia);
+		return areaService.save(area);
 	}
 	
-	@PutMapping("/provincias/{id}")
+	@PutMapping("/areas/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia update(@RequestBody Provincia provincia, @PathVariable Long id) {
-		Provincia provinciaActual=provinciaService.findById(id);
-		provinciaActual.setNombre_provincia(provincia.getNombre_provincia());
-		return provinciaService.save(provinciaActual);
+	public Area update(@RequestBody Area area, @PathVariable Long id) {
+		Area areaActual=areaService.findById(id);
+		areaActual.setNombre_area(area.getNombre_area());
+		return areaService.save(areaActual);
 	}
 	
-	@DeleteMapping("/provincias/{id}")
+	@DeleteMapping("/areas/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		provinciaService.delete(id);
+		areaService.delete(id);
 		
 	}
 }

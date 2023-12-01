@@ -1,8 +1,8 @@
-package com.example.prueba_cuatro.models.service;
+package com.example.prueba_cuatro.models.services;
 
 import java.util.List;
 
-import com.ista.springboot.web.app.models.entity.Parroquia;
+import com.example.prueba_cuatro.models.entity.Parroquia;
 
 
 public interface IParroquiaService {

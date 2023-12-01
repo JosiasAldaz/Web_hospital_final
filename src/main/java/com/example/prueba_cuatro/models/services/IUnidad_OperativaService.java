@@ -1,8 +1,8 @@
-package com.example.prueba_cuatro.models.service;
+package com.example.prueba_cuatro.models.services;
 
 import java.util.List;
 
-import com.ista.springboot.web.app.models.entity.Unidad_Operativa;
+import com.example.prueba_cuatro.models.entity.Unidad_Operativa;
 
 
 public interface IUnidad_OperativaService {

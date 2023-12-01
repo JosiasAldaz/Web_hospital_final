@@ -1,11 +1,11 @@
-package com.example.prueba_cuatro.models.service;
+package com.example.prueba_cuatro.models.services;
 
 import java.util.List;
 
 import com.example.prueba_cuatro.models.entity.Historias_Clinicas;
 
 
-public interface IHistoriasClinicasService {
+public interface IHistorias_ClinicasService {
 	
 	public List<Historias_Clinicas> findAll();
 	

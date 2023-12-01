@@ -14,48 +14,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.prueba_cuatro.models.entity.Provincia;
-import com.example.prueba_cuatro.models.services.IProvinciaService;
-
+import com.example.prueba_cuatro.models.entity.Parroquia;
+import com.example.prueba_cuatro.models.services.IParroquiaService;
 
 @RestController
 @RequestMapping("/api")
-public class ProvinciaRestController {
-	
+public class ParroquiaRestController {
 	@Autowired
-	private IProvinciaService provinciaService;
+	private IParroquiaService parroquiaService;
 	
-	@GetMapping("/provincias")
-	public List<Provincia> index(){
-		return provinciaService.findAll();
-		
+	@GetMapping("/parroquias")
+	private List<Parroquia> index(){
+		return parroquiaService.findAll();
 	}
 	
-	@GetMapping("/provincias/{id}")
-	public Provincia show(@PathVariable Long id) {
+	@GetMapping("/parroquias/{id}")
+	public Parroquia show(@PathVariable Long id) {
 		
-		return provinciaService.findById(id);
+		return parroquiaService.findById(id);
 	}
 	
-	@PostMapping("/provincias")
+	@PostMapping("/parroquias")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia create(@RequestBody Provincia provincia) {
+	public Parroquia create(@RequestBody Parroquia parroquia) {
 		
-		return provinciaService.save(provincia);
+		return parroquiaService.save(parroquia);
 	}
 	
-	@PutMapping("/provincias/{id}")
+	@PutMapping("/parroquias/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Provincia update(@RequestBody Provincia provincia, @PathVariable Long id) {
-		Provincia provinciaActual=provinciaService.findById(id);
-		provinciaActual.setNombre_provincia(provincia.getNombre_provincia());
-		return provinciaService.save(provinciaActual);
+	public Parroquia update(@RequestBody Parroquia parroquia, @PathVariable Long id) {
+		Parroquia parroquiaActual=parroquiaService.findById(id);
+		parroquiaActual.setNombre_parroquia(parroquia.getNombre_parroquia());
+		return parroquiaService.save(parroquiaActual);
 	}
 	
-	@DeleteMapping("/provincias/{id}")
+	@DeleteMapping("/parroquias/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		provinciaService.delete(id);
+		parroquiaService.delete(id);
 		
 	}
 }
