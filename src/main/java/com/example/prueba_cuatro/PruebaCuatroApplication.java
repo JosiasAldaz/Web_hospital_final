@@ -9,7 +9,7 @@ public class PruebaCuatroApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaCuatroApplication.class, args);
 		System.out.println("ERROR SOLUCIONADO");
-		System.out.println("PRIMER COMMIT CON CON USUARIOS");
+		System.out.println("PRIMER COMMIT CON CON SUBIR");
 	}
 
 }
