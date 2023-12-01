@@ -29,7 +29,7 @@ public class ProvinciaServiceImpl implements IProvinciaService{
 	@Override
 	@Transactional
 	public Provincia save(Provincia provincia) {
-		// TODO Auto-generated method stub
+		
 		return ProvinciaDao.save(provincia);
 	}
 
