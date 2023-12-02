@@ -31,7 +31,7 @@ public class Unidad_Operativa implements Serializable{
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="area_id")
-	private Area area;
+	private Area areas;
 	
 	@OneToMany(mappedBy="unidades_operativas",cascade=CascadeType.ALL)
 	private List<Registro_Parte_Diario> registro_parte_diario;
@@ -61,11 +61,11 @@ public class Unidad_Operativa implements Serializable{
 	}
 
 	public Area getArea() {
-		return area;
+		return areas;
 	}
 
-	public void setArea(Area area) {
-		this.area = area;
+	public void setAreas(Area areas) {
+		this.areas = areas;
 	}
 	
 	

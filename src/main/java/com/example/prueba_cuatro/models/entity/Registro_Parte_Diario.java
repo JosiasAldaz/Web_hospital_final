@@ -30,6 +30,7 @@ public class Registro_Parte_Diario implements Serializable{
 	private Double peso_paciente;
 	private Double talla_paciente;
 	
+	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="historias_clinicas_id")
 	private Historias_Clinicas historias_clinicas;
@@ -37,7 +38,7 @@ public class Registro_Parte_Diario implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="unidades_opertivas_id")
 	
-	private Unidad_Operativa unidad_opertiva;
+	private Unidad_Operativa unidades_operativas;
 	
 	public Historias_Clinicas getHistorias_clinicas() {
 		return historias_clinicas;
@@ -45,11 +46,11 @@ public class Registro_Parte_Diario implements Serializable{
 	public void setHistorias_clinicas(Historias_Clinicas historias_clinicas) {
 		this.historias_clinicas = historias_clinicas;
 	}
-	public Unidad_Operativa getUnidad_opertiva() {
-		return unidad_opertiva;
+	public Unidad_Operativa getUnidad_opertivas() {
+		return unidades_operativas;
 	}
-	public void setUnidad_opertiva(Unidad_Operativa unidad_opertiva) {
-		this.unidad_opertiva = unidad_opertiva;
+	public void setUnidad_opertivas(Unidad_Operativa unidades_operativas) {
+		this.unidades_operativas = unidades_operativas;
 	}
 	public Long getId() {
 		return id;

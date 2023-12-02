@@ -31,7 +31,7 @@ public class Parroquia implements Serializable{
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="canton_id")
-	private Canton canton;
+	private Canton cantones;
 	
 	@OneToMany(mappedBy="parroquias",cascade=CascadeType.ALL)
 	private List<Area> areas;
@@ -60,12 +60,12 @@ public class Parroquia implements Serializable{
 		this.nombre_parroquia = nombre_parroquia;
 	}
 
-	public Canton getCanton() {
-		return canton;
+	public Canton getCantones() {
+		return cantones;
 	}
 
-	public void setCanton(Canton canton) {
-		this.canton = canton;
+	public void setCantones(Canton cantones) {
+		this.cantones = cantones;
 	}
 	
 	

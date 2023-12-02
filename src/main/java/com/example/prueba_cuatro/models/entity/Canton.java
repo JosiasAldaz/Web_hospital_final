@@ -32,17 +32,17 @@ public class Canton implements Serializable{
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="provincia_id")
-	private Provincia provincia;
+	private Provincia provincias;
 	
 	@OneToMany(mappedBy="cantones",cascade=CascadeType.ALL)
 	private List<Parroquia> parroquias;
 	
-	public Provincia getProvincia() {
-		return provincia;
+	public Provincia getProvincias() {
+		return provincias;
 	}
 
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
+	public void setProvincias(Provincia provincias) {
+		this.provincias = provincias;
 	}
 
 	public List<Parroquia> getParroquias() {

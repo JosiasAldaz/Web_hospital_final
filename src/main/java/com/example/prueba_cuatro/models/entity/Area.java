@@ -32,7 +32,7 @@ public class Area implements Serializable{
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="parroquia_id")
-	private Parroquia parroquia;
+	private Parroquia parroquias;
 
 	@OneToMany(mappedBy="areas",cascade=CascadeType.ALL)
 	private List<Unidad_Operativa> unidades_operativas;
@@ -68,12 +68,12 @@ public class Area implements Serializable{
 
 
 	public Parroquia getParroquia() {
-		return parroquia;
+		return parroquias;
 	}
 
 
-	public void setParroquia(Parroquia parroquia) {
-		this.parroquia = parroquia;
+	public void setParroquias(Parroquia parroquias) {
+		this.parroquias = parroquias;
 	}
 	
 	
