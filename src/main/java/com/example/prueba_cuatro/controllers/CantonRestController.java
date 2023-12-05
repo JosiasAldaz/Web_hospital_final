@@ -25,25 +25,25 @@ public class CantonRestController {
 	@Autowired
 	private ICantonService cantonService;
 	
-	@GetMapping("/cantones")
+	@GetMapping("/canton")
 	private List<Canton> index(){
 		return cantonService.findAll();
 	}
 	
-	@GetMapping("/cantones/{id}")
+	@GetMapping("/canton/{id}")
 	public Canton show(@PathVariable Long id) {
 		
 		return cantonService.findById(id);
 	}
 	
-	@PostMapping("/cantones")
+	@PostMapping("/canton")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Canton create(@RequestBody Canton canton) {
 		
 		return cantonService.save(canton);
 	}
 	
-	@PutMapping("/cantones/{id}")
+	@PutMapping("/canton/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Canton update(@RequestBody Canton canton, @PathVariable Long id) {
 		Canton cantonActual=cantonService.findById(id);
@@ -51,7 +51,7 @@ public class CantonRestController {
 		return cantonService.save(cantonActual);
 	}
 	
-	@DeleteMapping("/cantones/{id}")
+	@DeleteMapping("/canton/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		cantonService.delete(id);

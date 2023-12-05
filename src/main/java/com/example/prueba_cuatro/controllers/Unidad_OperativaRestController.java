@@ -24,7 +24,7 @@ public class Unidad_OperativaRestController {
 	@Autowired
 	private IUnidad_OperativaService Unidad_OperativaService;
 	
-	@GetMapping("/unidades_operativas")
+	@GetMapping("/unidades_operativas")	
 	private List<Unidad_Operativa> index(){
 		return Unidad_OperativaService.findAll();
 	}

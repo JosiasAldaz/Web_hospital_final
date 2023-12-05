@@ -25,35 +25,24 @@ public class Area implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id_area;
+	private Long id_parroquias;
 	private String nombre_area;
 	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_area")
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn(name="parroquia_id")
-	private Parroquia parroquias;
-
-	@OneToMany(mappedBy="areas",cascade=CascadeType.ALL)
-	private List<Unidad_Operativa> unidades_operativas;
 	
-	public List<Unidad_Operativa> getUnidades_operativas() {
-		return unidades_operativas;
+	private List<Parroquia> parroquias;
+
+
+	public Long getId_area() {
+		return id_area;
 	}
 
 
-	public void setUnidades_operativas(List<Unidad_Operativa> unidades_operativas) {
-		this.unidades_operativas = unidades_operativas;
-	}
-
-
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setId_area(Long id_area) {
+		this.id_area = id_area;
 	}
 
 
@@ -67,15 +56,24 @@ public class Area implements Serializable{
 	}
 
 
-	public Parroquia getParroquia() {
+	public Long getId_parroquias() {
+		return id_parroquias;
+	}
+
+
+	public void setId_parroquias(Long id_parroquias) {
+		this.id_parroquias = id_parroquias;
+	}
+
+
+	public List<Parroquia> getParroquias() {
 		return parroquias;
 	}
 
 
-	public void setParroquias(Parroquia parroquias) {
+	public void setParroquias(List<Parroquia> parroquias) {
 		this.parroquias = parroquias;
 	}
-	
 	
 	
 }

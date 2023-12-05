@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="cantones" ,uniqueConstraints= {@UniqueConstraint(columnNames= {"nombre"})}) 
+@Table(name="canton" ,uniqueConstraints= {@UniqueConstraint(columnNames= {"nombre_canton"})})
 public class Canton implements Serializable{
 
 	/**
@@ -26,24 +27,25 @@ public class Canton implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long id_canton;
 	
 	private String nombre_canton;
+	@Column(nullable = false)
+	private Long id_provincias;
 
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn(name="provincia_id")
-	private Provincia provincias;
-	
-	@OneToMany(mappedBy="cantones",cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_canton")
 	private List<Parroquia> parroquias;
 	
-	public Provincia getProvincias() {
-		return provincias;
+	public Long getId_provincias() {
+		return id_provincias;
 	}
 
-	public void setProvincias(Provincia provincias) {
-		this.provincias = provincias;
+	public void setId_provincias(Long id_provincias) {
+		this.id_provincias = id_provincias;
 	}
+
+
 
 	public List<Parroquia> getParroquias() {
 		return parroquias;
@@ -53,12 +55,12 @@ public class Canton implements Serializable{
 		this.parroquias = parroquias;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getId_canton() {
+		return id_canton;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId_canton(Long id_canton) {
+		this.id_canton = id_canton;
 	}
 
 	public String getNombre_canton() {

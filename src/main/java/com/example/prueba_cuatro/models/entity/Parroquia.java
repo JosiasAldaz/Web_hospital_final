@@ -13,9 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="parroquias") 
+@Table(name="Parroquia" ,uniqueConstraints= {@UniqueConstraint(columnNames= {"nombre_parroquia"})})
 public class Parroquia implements Serializable{
 
 	/**
@@ -25,31 +26,23 @@ public class Parroquia implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id_parroquias;
 	private String nombre_parroquia;
+	private Long canton_id;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn(name="canton_id")
-	private Canton cantones;
+
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_parroquias")
 	
-	@OneToMany(mappedBy="parroquias",cascade=CascadeType.ALL)
-	private List<Area> areas;
+	private List<Canton> cantones;
 
-	public List<Area> getAreas() {
-		return areas;
+
+	public Long getId_parroquias() {
+		return id_parroquias;
 	}
 
-	public void setAreas(List<Area> areas) {
-		this.areas = areas;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setId_parroquias(Long id_parroquias) {
+		this.id_parroquias = id_parroquias;
 	}
 
 	public String getNombre_parroquia() {
@@ -60,11 +53,19 @@ public class Parroquia implements Serializable{
 		this.nombre_parroquia = nombre_parroquia;
 	}
 
-	public Canton getCantones() {
+	public Long getCanton_id() {
+		return canton_id;
+	}
+
+	public void setCanton_id(Long canton_id) {
+		this.canton_id = canton_id;
+	}
+
+	public List<Canton> getCantones() {
 		return cantones;
 	}
 
-	public void setCantones(Canton cantones) {
+	public void setCantones(List<Canton> cantones) {
 		this.cantones = cantones;
 	}
 	
