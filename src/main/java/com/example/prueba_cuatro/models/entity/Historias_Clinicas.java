@@ -6,14 +6,17 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="historias_clinicas") 
+@Table(name="Historias_Clinicas" ,uniqueConstraints= {@UniqueConstraint(columnNames= {"cedula_NroHistoriaClinica"})})
 public class Historias_Clinicas implements Serializable{
 
 	/**
@@ -22,14 +25,14 @@ public class Historias_Clinicas implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long cedula_NroHistoriaClinica;
 	
 	private String nombre_paciente;
 	private String apellido_paciente;
 	private Date fecha_nacimiento_paciente;
 	
-	@OneToMany(mappedBy="historias_clinicas",cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="cedula_NroHistoriaClinica")
 	private List<Registro_Parte_Diario> registro_parte_diario;
 	
 	public List<Registro_Parte_Diario> getRegistro_parte_diario() {
@@ -38,12 +41,7 @@ public class Historias_Clinicas implements Serializable{
 	public void setRegistro_parte_diario(List<Registro_Parte_Diario> registro_parte_diario) {
 		this.registro_parte_diario = registro_parte_diario;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public String getNombre_paciente() {
 		return nombre_paciente;
 	}
@@ -62,7 +60,13 @@ public class Historias_Clinicas implements Serializable{
 	public void setFecha_nacimiento_paciente(Date fecha_nacimiento_paciente) {
 		this.fecha_nacimiento_paciente = fecha_nacimiento_paciente;
 	}
-	
+	public Long getCedula_NroHistoriaClinica() {
+		return cedula_NroHistoriaClinica;
+	}
+	public void setCedula_NroHistoriaClinica(Long cedula_NroHistoriaClinica) {
+		this.cedula_NroHistoriaClinica = cedula_NroHistoriaClinica;
+	}
+
 	
 	
 }

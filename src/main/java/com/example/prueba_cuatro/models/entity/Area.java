@@ -33,8 +33,7 @@ public class Area implements Serializable{
 	@JoinColumn(name="id_area")
 	
 	
-	private List<Parroquia> parroquias;
-
+	private List<Unidad_Operativa> unidades;
 
 	public Long getId_area() {
 		return id_area;
@@ -66,14 +65,15 @@ public class Area implements Serializable{
 	}
 
 
-	public List<Parroquia> getParroquias() {
-		return parroquias;
+	public List<Unidad_Operativa> getUnidades() {
+		return unidades;
 	}
 
 
-	public void setParroquias(List<Parroquia> parroquias) {
-		this.parroquias = parroquias;
+	public void setUnidades(List<Unidad_Operativa> unidades) {
+		this.unidades = unidades;
 	}
+
 	
 	
 }

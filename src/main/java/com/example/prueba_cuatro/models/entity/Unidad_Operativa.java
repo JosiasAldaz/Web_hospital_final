@@ -13,9 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="unidades_operativas") 
+@Table(name="Unidad_Operativa" ,uniqueConstraints= {@UniqueConstraint(columnNames= {"nombre_unidad_operativa"})})
 public class Unidad_Operativa implements Serializable{
 
 	/**
@@ -25,15 +26,12 @@ public class Unidad_Operativa implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id_unidad_operativa;
 	private String nombre_unidad_operativa;
+	private Long id_area;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn(name="area_id")
-	private Area areas;
-	
-	@OneToMany(mappedBy="unidades_operativas",cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_unidad_operativa")
 	private List<Registro_Parte_Diario> registro_parte_diario;
 
 	public List<Registro_Parte_Diario> getRegistro_parte_diario() {
@@ -44,12 +42,13 @@ public class Unidad_Operativa implements Serializable{
 		this.registro_parte_diario = registro_parte_diario;
 	}
 
-	public Long getId() {
-		return id;
+
+	public Long getId_unidad_operativa() {
+		return id_unidad_operativa;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId_unidad_operativa(Long id_unidad_operativa) {
+		this.id_unidad_operativa = id_unidad_operativa;
 	}
 
 	public String getNombre_unidad_operativa() {
@@ -60,13 +59,14 @@ public class Unidad_Operativa implements Serializable{
 		this.nombre_unidad_operativa = nombre_unidad_operativa;
 	}
 
-	public Area getArea() {
-		return areas;
+	public Long getId_area() {
+		return id_area;
 	}
 
-	public void setAreas(Area areas) {
-		this.areas = areas;
+	public void setId_area(Long id_area) {
+		this.id_area = id_area;
 	}
+
 	
 	
 }
