@@ -28,7 +28,6 @@ public class Registro_Parte_Diario implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_parte_diario;
 	
-	
 	private Date fecha_registro;
 	private Long numero_visita;
 	private Double peso_paciente;
